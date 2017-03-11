@@ -7,7 +7,7 @@
 //
 
 #include <iostream>
-#include "bind.dpp"
+#include "bind.hpp"
 #include <iostream>
 #include <functional>
 
@@ -69,6 +69,16 @@ void test_5()
     print_test(my_bind_5(), st_bind_5());
 }
 
+void test_6() {
+    auto f = [](int a, int b, int c) {
+        return a + b + c;
+    };
+    auto g = [](int a, int b) {
+        return a + b;
+    };
+    bind(f, 42, _1, bind(g, _1, _2))(24, 43);
+}
+
 int main()
 {
     test_1();
@@ -76,4 +86,5 @@ int main()
     test_3();
     test_4();
     test_5();
+    test_6();
 }
