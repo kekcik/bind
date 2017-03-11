@@ -40,7 +40,7 @@ void test_1()
 
 void test_2()
 {
-    auto my_bind_2 = bind(foo, 1, 2, 3, _1, _2);
+    auto my_bind_2 = bind(foo, 1, 2, 3,  _1, _2);
     auto st_bind_2 = std::bind(foo, 1, 2, 3, __1, __2);
     print_test(my_bind_2(4, 5), st_bind_2(4, 5));
 }
@@ -71,10 +71,12 @@ void test_5()
 
 void test_6() {
     auto f = [](int a, int b, int c) {
-        return a + b + c;
+        int sum = a + b + c;
+        return sum;
     };
     auto g = [](int a, int b) {
-        return a + b;
+        int sum = a + b;
+        return sum;
     };
     bind(f, 42, _1, bind(g, _1, _2))(24, 43);
 }

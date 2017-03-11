@@ -13,20 +13,23 @@
 #include <cstdint>
 
 template <uint32_t N>
-struct placeholder{};
-placeholder<0> _1;
-placeholder<1> _2;
-placeholder<2> _3;
-placeholder<3> _4;
-placeholder<4> _5;
-placeholder<5> _6;
-placeholder<6> _7;
-placeholder<7> _8;
-placeholder<8> _9;
-placeholder<9> _10;
+ struct placeholder{};
+static  placeholder<0> _1;
+static  placeholder<1> _2;
+static  placeholder<2> _3;
+static  placeholder<3> _4;
+static  placeholder<4> _5;
+static  placeholder<5> _6;
+static  placeholder<6> _7;
+static  placeholder<7> _8;
+static  placeholder<8> _9;
+static  placeholder<9> _10;
+
 
 template <typename F, typename ...Args>
 struct bind_object {
+    
+    
     private:
     std::tuple<typename std::decay<Args>::type...> args;
     typename std::decay<F>::type f;
